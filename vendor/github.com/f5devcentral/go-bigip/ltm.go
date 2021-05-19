@@ -1038,9 +1038,9 @@ type Monitor struct {
 	Adaptive       string
 	AdaptiveLimit  int
 	Database       string
-	Count          int
-	RecvColumn     int
-	RecvRow        int
+	Count          string
+	RecvColumn     string
+	RecvRow        string
 }
 
 type monitorDTO struct {
@@ -1071,9 +1071,9 @@ type monitorDTO struct {
 	Mode           string `json:"mode,omitempty"`
 	Adaptive       string `json:"adaptive,omitempty"`
 	AdaptiveLimit  int    `json:"adaptiveLimit,omitempty"`
-	Count          int    `json:"count,omitempty"`
-	RecvColumn     int    `json:"recvColumn,omitempty"`
-	RecvRow        int    `json:"recvRow,omitempty"`
+	Count          string `json:"count,omitempty"`
+	RecvColumn     string `json:"recvColumn,omitempty"`
+	RecvRow        string `json:"recvRow,omitempty"`
 }
 
 type Profiles struct {

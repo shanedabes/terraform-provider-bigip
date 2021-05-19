@@ -338,9 +338,9 @@ func resourceBigipLtmMonitorUpdate(d *schema.ResourceData, meta interface{}) err
 		Username:       d.Get("username").(string),
 		Password:       d.Get("password").(string),
 		Database:       d.Get("database").(string),
-		Count:          d.Get("probe_count").(int),
-		RecvColumn:     d.Get("recv_column").(int),
-		RecvRow:        d.Get("recv_row").(int),
+		Count:          d.Get("probe_count").(string),
+		RecvColumn:     d.Get("recv_column").(string),
+		RecvRow:        d.Get("recv_row").(string),
 	}
 
 	err := client.ModifyMonitor(name, monitorParent(d.Get("parent").(string)), m)
