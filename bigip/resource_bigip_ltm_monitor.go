@@ -181,7 +181,7 @@ func resourceBigipLtmMonitor() *schema.Resource {
 				Optional:    true,
 				Description: "the database in which your user is created",
 			},
-			"count": {
+			"probe_count": {
 				Type:        schema.TypeInt,
 				Optional:    true,
 				Description: "the count",
@@ -279,7 +279,7 @@ func resourceBigipLtmMonitorRead(d *schema.ResourceData, meta interface{}) error
 			d.Set("password", m.Password)
 			d.Set("name", name)
 			d.Set("database", m.Database)
-			d.Set("count", m.Count)
+			d.Set("probe_count", m.Count)
 			d.Set("recv_column", m.RecvColumn)
 			d.Set("recv_row", m.RecvRow)
 			return nil
@@ -338,7 +338,7 @@ func resourceBigipLtmMonitorUpdate(d *schema.ResourceData, meta interface{}) err
 		Username:       d.Get("username").(string),
 		Password:       d.Get("password").(string),
 		Database:       d.Get("database").(string),
-		Count:          d.Get("count").(int),
+		Count:          d.Get("probe_count").(int),
 		RecvColumn:     d.Get("recv_column").(int),
 		RecvRow:        d.Get("recv_row").(int),
 	}
