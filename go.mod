@@ -5,6 +5,8 @@
 
 module github.com/F5Networks/terraform-provider-bigip
 
+replace github.com/f5devcentral/go-bigip => ./vendor/github.com/f5devcentral/go-bigip
+
 require (
 	github.com/Azure/azure-sdk-for-go v53.4.0+incompatible
 	github.com/Azure/azure-storage-blob-go v0.13.0

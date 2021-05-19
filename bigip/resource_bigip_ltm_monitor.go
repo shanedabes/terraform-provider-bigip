@@ -8,11 +8,12 @@ package bigip
 
 import (
 	"fmt"
-	"github.com/f5devcentral/go-bigip"
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"log"
 	"regexp"
 	"strings"
+
+	"github.com/f5devcentral/go-bigip"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
 var parentMonitors = map[string]bool{
@@ -180,6 +181,21 @@ func resourceBigipLtmMonitor() *schema.Resource {
 				Optional:    true,
 				Description: "the database in which your user is created",
 			},
+			"count": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Description: "the count",
+			},
+			"recv_column": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Description: "the column",
+			},
+			"recv_row": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Description: "the row",
+			},
 		},
 	}
 }
@@ -263,6 +279,9 @@ func resourceBigipLtmMonitorRead(d *schema.ResourceData, meta interface{}) error
 			d.Set("password", m.Password)
 			d.Set("name", name)
 			d.Set("database", m.Database)
+			d.Set("count", m.Count)
+			d.Set("recv_column", m.RecvColumn)
+			d.Set("recv_row", m.RecvRow)
 			return nil
 		}
 	}
@@ -319,6 +338,9 @@ func resourceBigipLtmMonitorUpdate(d *schema.ResourceData, meta interface{}) err
 		Username:       d.Get("username").(string),
 		Password:       d.Get("password").(string),
 		Database:       d.Get("database").(string),
+		Count:          d.Get("count").(int),
+		RecvColumn:     d.Get("recv_column").(int),
+		RecvRow:        d.Get("recv_row").(int),
 	}
 
 	err := client.ModifyMonitor(name, monitorParent(d.Get("parent").(string)), m)
