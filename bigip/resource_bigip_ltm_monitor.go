@@ -182,17 +182,17 @@ func resourceBigipLtmMonitor() *schema.Resource {
 				Description: "the database in which your user is created",
 			},
 			"probe_count": {
-				Type:        schema.TypeInt,
+				Type:        schema.TypeString,
 				Optional:    true,
 				Description: "the count",
 			},
 			"recv_column": {
-				Type:        schema.TypeInt,
+				Type:        schema.TypeString,
 				Optional:    true,
 				Description: "the column",
 			},
 			"recv_row": {
-				Type:        schema.TypeInt,
+				Type:        schema.TypeString,
 				Optional:    true,
 				Description: "the row",
 			},
